@@ -1,0 +1,76 @@
+﻿@model MHBlog.Models.Post
+@using  System.Globalization;
+@{
+    ViewData["Title"] = @Html.Raw(Model.Title);
+    ViewData["Image"] = Model.ImageName;
+    ViewData["Description"] = Model.Description;
+}
+<!-- Znaczniki JSON-LD wygenerowane przez Asystenta do oznaczania danych Google. -->
+
+    <div class="card">
+        <div class="card-body">
+           
+                <i class="fa fa-eye" aria-hidden="true" style="color:rgba(160,1,1,0.6);float:right">@(Model.ViewsCouter/2)</i>
+                <d style="color:rgb(160, 1, 1)">@Model.ReleaseDate.ToString("D", CultureInfo.CreateSpecificCulture("pl-PL"))</d>
+                <h2 itemprop="name" class="card-title" style="color:rgba(0,0,0,0.8)">@Html.Raw(Model.Title)</h2>
+
+                <div class="card-text" style="font-size:15px; color:#373D3F;font-family: 'Amiri', sans-serif;">@Html.Raw(Model.Body)</div>
+         
+            <div class="card-footer">
+                <a asp-action="Index" class="btn btn-primary">Powrót</a>
+
+                <div class="fb-like" data-href="@Context.Request.Path" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div></br>
+                <div style="margin-top:20px">
+                    @foreach (var tag in Model.PostTags)
+                    {
+
+                        <a asp-route="tag" asp-route-id="@tag.Tag.TagID" asp-route-name="@tag.Tag.Name">@tag.Tag.Name </a>
+
+                    }
+                </div>
+           
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="fb-comments" data-href="@Context.Request.Host@Context.Request.Path" data-width="100%" data-numposts="5"></div>
+
+    @section sharebar
+        {
+
+        <div id="share">
+
+
+            <!-- facebook -->
+            <a class="facebook" href="https://www.facebook.com/share.php?u=@Context.Request.Host@Context.Request.Path" target="blank"><i class="fa fa-facebook"></i></a>
+
+            <!-- twitter -->
+            <a class="twitter" href="https://twitter.com/intent/tweet?status=@Context.Request.Host@Context.Request.Path" target="blank"><i class="fa fa-twitter"></i></a>
+
+            <!-- google plus -->
+            <a class="googleplus" href="https://plus.google.com/share?url=@Context.Request.Host@Context.Request.Path" target="blank"><i class="fa fa-google-plus"></i></a>
+
+            <a class="pinterest" href="https://plus.google.com/share?url=@Context.Request.Host@Context.Request.Path" target="blank"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+
+
+        </div>
+    }
+
+
+
+
+
+
+
+
+
+
+    @section Scripts
+        {
+
+
+
+    }

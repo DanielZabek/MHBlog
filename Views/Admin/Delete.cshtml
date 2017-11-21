@@ -1,0 +1,16 @@
+﻿@model MHBlog.Models.Post
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+
+
+<h3 style="margin-top:100px">Czy na pewno chcesz usunąć post: @Model.Title ?</h3>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="USUŃ" class="btn btn-default" /> |
+        <a asp-action="Index" class="btn btn-default">WRÓĆ DO LISTY</a>
+    </form>
+

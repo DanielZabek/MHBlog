@@ -1,0 +1,46 @@
+﻿@model List<MHBlog.Models.Category>
+
+
+
+
+<p style="margin-top:100px">
+    <d style="font-size:34px">Kategorie:</d>
+    <a asp-action="CreateCategory" class="btn btn-primary" style="margin-left:75%">Dodaj nową</a>
+</p>
+
+<div class="card" style="margin-bottom:40px">
+    <div class="card-body">
+        <div class="table-wrapper-2">
+            <table class="table table-responsive">
+                <thead class="mdb-color" style="background-color:rgba(0,150,255,0.3)">
+                    <tr>
+                        <th class="th-lg">ID</th>
+                        <th class="th-lg">Nazwa</th>
+                        <th class="th-lg">Używana</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.CategoryID)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                            @if (item.isUsed == true)
+                            {
+                                <td>TAK</td>
+                            }
+                            else
+                            {
+                                <td>NIE</td>
+                            }
+                            <td><a asp-action="DeleteCategory" asp-route-id="@item.CategoryID" style="color:red">Usuń</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

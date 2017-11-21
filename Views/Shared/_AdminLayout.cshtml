@@ -1,0 +1,156 @@
+﻿
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Marcelina Hojda - Blog</title>
+   
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="~/lib/bootstrap/css/bootstrap-grid.css" rel="stylesheet">
+    <link href="~/lib/bootstrap/css/bootstrap-reboot.css" rel="stylesheet">
+    <link href="~/css/mdb.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/minified/themes/default.min.css" />
+
+    <!-- Custom fonts for this template -->
+ 
+    <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Amiri&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+
+    <link href='https://fonts.googleapis.com/css?family=Abhaya+Libre&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Almendra&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+
+
+
+
+</head>
+
+
+<body>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light white fixed-top scrolling-navbar">
+        <div class="container">
+            <!-- <a class="navbar-brand" asp-controller="Home" asp-action="Index" style="padding:0px; margin-right:0px"><img src="~/images/logo1.png" height="64"/></a> -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav navbar-left">
+                    <li class="nav-item dropdown">
+                        <a asp-controller="Home" asp-action="Index" class="nav-link" style="padding:20px; margin-left:0px">
+                            Blog
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a asp-controller="Home" asp-action="Contact" class="nav-link" style="padding:20px; margin-left:0px">
+                            Kontakt
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" style="padding:20px">
+                            Kategorie
+                        </a>
+                        @await Component.InvokeAsync("CategoryList", new { isDropdown = true })
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav ml-auto">
+                    <li style="padding-top:7px"> <div class="fb-like" data-href="https://marcelinahojda.pl/" data-width="100" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div></li>
+                    <li>
+
+                        <form asp-action="Index" asp-controller="Home" method="get">
+                            <div class="searchBox">
+                                <input type="text" name="SearchString" placeholder="Czego szukasz?">
+                                <button type="submit" class="btn btn-primary" style="height:40px; margin-right:10px">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </li>
+
+
+                    <li>
+                        <a asp-controller="Admin" asp-action="Index" class="btn btn-primary" style="height:40px; margin-left:10px">
+                            PANEL
+                        </a>
+
+                    </li>
+                    <li>
+                        <form method="post" asp-controller="Account" asp-action="Logout" style="height:40px;">
+                            <input type="submit" value="Wyloguj" class="btn btn-primary" style="height:40px">
+                        </form>
+
+                    </li>
+
+                </ul>
+
+
+            </div>
+        </div>
+
+
+    </nav>
+
+    <div class="container-fluid body-content">
+        <div class="row">
+
+            <div class="col-md-2">
+
+            </div>
+            <div class="col-md-8">
+                @RenderBody()
+            </div>
+            <div class="col-md-2">
+
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 mx-auto" style="text-align:center">
+
+                    <p class="copyright text-muted">Copyright &copy; Marcelina Hojda. Wszelkie prawa zastrzeżone 2017</p>
+                    <p style="background-color:rgba(160, 1, 1,0.7); color:white; padding-top:10px; padding-bottom:10px; margin-left:-20px; margin-right:-20px">Storzone przez Daniel Ząbek</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <section id="scripts">
+
+
+        <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+
+        <script src="~/lib/jquery/jquery.min.js"></script>
+        <script src="~/lib/popper/popper.min.js"></script>
+        <script src="~/minified/jquery.sceditor.xhtml.min.js"></script>
+        <script src="~/ckeditor/ckeditor.js"></script>
+
+        <script src=~/js/bootstrap.js></script>
+
+        <script src="~/js/mdb.min.js"></script>
+       
+
+
+
+
+        @RenderSection("scripts", required: false)
+    </section>
+</body>
+
+</html>
+

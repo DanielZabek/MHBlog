@@ -1,0 +1,141 @@
+﻿@model PaginatedList<MHBlog.Models.Post>
+@using  System.Globalization;
+@{
+
+    ViewData["Title"] = "Marcelina Hojda - Blog";
+    ViewData["Image"] = "13.png";
+    ViewData["Description"] = "Cześć! Mam na imię Marcelina, studiuję dziennikarstwo i mam nadzieję, że w tym zawodzie również będę pracować. Pochodzę z Sosnowca i spróbuje was m.in. przekonać, że na Śląsku i w Zagłębiu jest fajnie. Interesuje się wszystkim i niczym, z naciskiem na szeroko pojętą kulturę: kinematografią, muzyką, modą oraz wszelakimi kuchniami świata jak i całym światem, chociaż moje zdolności kulinarne są mocno dyskusyjne. Spróbuje podzielić się z Wami moim spojrzeniem na świat i mam nadzieję, że dacie się porwać do mojego małego, wirtualnego świata. ";
+}
+
+@if (ViewData["Name"] != null)
+{
+    <a asp-action="Index"
+       class="btn btn-primary">
+        Powrót do strony głównej
+    </a>
+    <div style="width:100%;  box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.12); margin-bottom:30px; text-align:center; font-size:20px; color:rgba(160,1,1,0.7);font-weight:700">@ViewData["Name"].ToString().ToUpper()</div>
+    
+}
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-6 col-sm-6 col-lg-6">
+            <!--Card-->
+
+            <div class="card" style="margin-bottom:15px;">
+
+                <!--Card image-->
+                <a itemprop="name" asp-route="details" asp-route-id="@item.ID" asp-route-title="@item.Title" style="color:white; font-weight:700; font-size:22px">
+                    <div class="view overlay hm-white-strong" style="cursor:pointer; background-image:url(/images/@item.ImageName); background-size: cover; height: 250px;  background-position: 50% 50%;">
+                        
+                        <div class="mask flex-center" style="color:#bb5e5e; font-size:26px">CZYTAJ
+                        </div> 
+                        </div>
+                </a>
+
+                <!--Card content-->
+                <div class="card-body">
+                   
+                        <a class="card-title" asp-route="category" asp-route-id="@item.CategoryID" asp-route-name="@item.Category.Name" style="color:rgba(160, 1, 1,0.8); font-size:20px">| @Html.DisplayFor(modelItem => item.Category.Name)</a>
+
+                        <i itemprop="ratingCount" class="fa fa-eye" aria-hidden="true" style="color:rgba(160,1,1,0.6);float:right">@(item.ViewsCouter / 2)</i>
+             
+
+                    <!--Title-->
+
+                    <a class="card-title" asp-route="details" asp-route-id="@item.ID" asp-route-title="@item.Title" style="color:rgba(160, 1, 1, 0.8);margin-top:20px"><br><h1>@Html.DisplayFor(modelItem => item.Title)</h1></a>
+                    <!--Text-->
+                    <div class="card-text" style="height:105px;overflow: hidden; text-overflow: ellipsis;">
+                        @Html.Raw(item.Description).ToString().Substring(0, 280)... <a asp-route="details" asp-route-id="@item.ID" asp-route-title="@item.Title"> |  Więcej</a>
+                    </div>
+                    <div class="card-text" style="margin-top:10px">
+                        <d style="color:rgba(160, 1, 1, 1); ">@item.ReleaseDate.ToString("D", CultureInfo.CreateSpecificCulture("pl-PL"))</d>
+                      
+                    </div>
+                </div>
+
+
+                <div class="card-footer">
+                    @foreach (var tag in item.PostTags.Take(5))
+                    {
+
+                        <a asp-route="tag" asp-route-id="@tag.Tag.TagID" asp-route-name="@tag.Tag.Name">#@tag.Tag.Name </a>
+
+                    }
+                </div>
+
+                <!--/.Card-->
+            </div>
+
+        </div>
+    }
+    @{
+        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    }
+    <div class="pages">
+        @if (Model.HasPreviousPage)
+        {
+            <a asp-action="Index"
+               asp-route-page="@(Model.PageIndex - 1)"
+               class="btn btn-default center-block" style="margin-right:10%;" >
+                Poprzednia
+            </a>
+        }
+        else
+        {
+            <a class="btn btn-default center-block disabled" style="margin-right:10%;">
+                Poprzednia
+            </a>
+        }
+
+       
+        <a>@Model.PageIndex / @Model.TotalPages</a> 
+        @if (Model.HasNextPage)
+        {
+           <a asp-action="Index" style="margin-left:10%;"
+               asp-route-page="@(Model.PageIndex + 1)"
+               class="btn btn-default center-block">
+                Następna
+            </a>
+        }
+        else
+        {
+            <a  style="margin-left:10%;" class="btn btn-default center-block disabled">
+                Następna
+            </a>
+        }
+
+    </div>
+
+</div>
+
+
+
+
+@section sharebar
+    {
+
+    <div id="share">
+
+        
+        <!-- facebook -->
+        <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A//marcelinahojda.pl" target="_self"><i class="fa fa-facebook"></i></a>
+        <!-- twitter -->
+        <a class="twitter" href="https://twitter.com/intent/tweet?status=@ViewData["Title"]+http://marcelinahojda.pl" target="blank"><i class="fa fa-twitter"></i></a>
+        <!-- google plus -->
+        <a class="googleplus" href="https://plus.google.com/share?url=https://marcelinahojda.pl/" target="blank"><i class="fa fa-google-plus"></i></a>
+        <a class="pinterest" href="http://pinterest.com/pin/create/button/?url=https://marcelinahojda.pl&description=Marcelina+Hojda-Blog" target="blank"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+    
+
+    </div>
+}
+
+
+
+
+
+
+@section Scripts
+    {
+}

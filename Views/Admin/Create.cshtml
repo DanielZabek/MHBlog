@@ -1,0 +1,79 @@
+﻿@model MHBlog.Models.CreateViewModel
+
+@{
+    ViewData["Title"] = "Create";
+
+
+}
+
+<h2 style="margin-top:150px">Utwórz nowy post</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label>Tytuł:</label>
+                <input asp-for="Post.Title" class="form-control" />
+                <span asp-validation-for="Post.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Krótki opis:</label>
+
+                <textarea asp-for="Post.Description" style="height:350px;"></textarea>
+
+            </div>
+            <div class="form-control">
+                <label>Post:</label>
+
+                <textarea asp-for="Post.Body" name="Body" id="Body" rows="20"> </textarea>
+
+            </div>
+            <div class="form-group">
+                <label>Kategoria:</label>
+                <select asp-for="Post.CategoryID" class ="form-control" style="height:50px;" asp-items="@(new SelectList(Model.Categories,"CategoryID","Name"))"></select>
+            </div>
+            
+            <div class="form-group">
+                <label>Główne zdjęcie:</label><br/>
+                    <input asp-for="File"/>
+                    <span asp-validation-for="Post.ImageName" class="text-danger"></span>
+             
+            </div>
+            <div class="form-group">
+                <label>Tagi:</label><br/>
+                <h6>(Wpisz tagi odzielając je przecinkami, przykład: bar,kolacja,obiad,restauracja,...) </h6><br/>
+                <input asp-for="tagsString" class="form-control" style="height:100px;" />
+            </div>
+               
+            
+            <div class="form-group" style="text-align:center; margin-top:150px">
+                <input type="submit" value="Stwórz" class="btn btn-primary" style="width:300px" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-primary">Wróc do listy</a>
+</div>
+
+
+
+
+
+@section Scripts
+    {
+
+ <script>
+                // Replace the <textarea id="editor1"> with a CKEditor
+                // instance, using default configuration.
+                
+        CKEDITOR.replace( 'Body');
+</script>
+
+
+
+
+}

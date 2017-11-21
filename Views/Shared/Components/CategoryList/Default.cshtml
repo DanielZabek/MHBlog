@@ -1,0 +1,14 @@
+﻿@model List<MHBlog.Models.Category>
+
+
+   
+
+    @foreach (var item in Model)
+    {
+        
+            <a class="btn btn-clear" asp-route="category" asp-route-id="@item.CategoryID" asp-route-name="@item.Name"><div class="clear-text" style="font-size:1rem">@item.Name</div></a>
+        
+    }
+
+
+

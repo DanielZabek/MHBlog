@@ -1,0 +1,117 @@
+﻿@model MHBlog.Models.ContactFormModel;
+@{
+
+    ViewData["Title"] = "Kontakt";
+    ViewData["Image"] = "kontakt.png";
+}
+
+
+<div class="row">
+    <div style="width:100%;  box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.12); margin-bottom:30px; text-align:center; font-size:20px; color:rgba(160,1,1,0.7);font-weight:700">
+        <div class="col-md-12">
+            <h2 class="card-title">Wypełnij formularz lub napisz bezpośrednio na:</h2>
+            <h2 style="color:deepskyblue; margin-bottom:20px">mhojda.blog@gmail.com</h2>
+            <h3>FORMULARZ</h3>
+        </div>
+    </div>
+
+</div>
+<div class="col-md-12"style="text-align:center">
+    <form class="form form-horizontal" method="post" style="text-align:center; margin-left:10%; margin-right:10%">
+
+        <div asp-validation-summary="All"></div>
+
+
+                <div class="form-group">
+
+                    <label asp-for="Contact.Name">Imię: (wymagane)</label>
+
+
+
+                    <input asp-for="Contact.Name" class="form-control" />
+
+                    <span asp-validation-for="Contact.Name"></span>
+
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label asp-for="Contact.LastName">Nazwisko:</label>
+
+
+
+                    <input asp-for="Contact.LastName" class="form-control" />
+
+                    <span asp-validation-for="Contact.LastName"></span>
+
+
+
+                </div>
+
+
+       
+
+                <div class="form-group">
+
+                    <label asp-for="Contact.Email">Email: (wymagane)</label>
+
+
+
+                    <input asp-for="Contact.Email" class="form-control" />
+
+                    <span asp-validation-for="Contact.Email"></span>
+
+
+
+                </div>
+
+
+
+
+                <div class="form-group">
+
+                    <label asp-for="Contact.Subject">Temat: (wymagane)</label>
+
+
+
+                    <textarea asp-for="Contact.Subject" rows="6" class="form-control"></textarea>
+
+                    <span asp-validation-for="Contact.Subject"></span>
+
+
+
+                </div>
+
+        
+
+
+                <div class="form-group">
+
+                    <label asp-for="Contact.Message">Wiadomość: (wymagane)</label>
+
+
+
+                    <textarea asp-for="Contact.Message" rows="18" style="height:200px" class="form-control"></textarea>
+
+                    <span asp-validation-for="Contact.Message"></span>
+
+
+
+                </div>
+
+       
+
+        
+
+
+
+            <button type="submit" class="btn btn-primary" style="width:100%">Wyślij</button>
+
+
+
+
+    </form>
+    </div>

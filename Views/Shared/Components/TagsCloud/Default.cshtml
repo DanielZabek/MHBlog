@@ -1,0 +1,49 @@
+﻿@model MHBlog.Models.TagsCloudViewComponentModel
+@foreach (var item in Model.tags)
+{
+    double popularity = (double)item.Counter / (double)Model.counter;
+    if (popularity >= 0.9)
+    {
+        <a asp-route="tag" asp-route-id="@item.TagID" asp-route-name="@item.Name" style="font-size:24px; color:rgb(160, 1, 1)">@item.Name </a>
+    }
+    else if (popularity >= 0.8 && popularity < 0.9)
+    {
+        <a asp-route="tag" asp-route-id="@item.TagID" asp-route-name="@item.Name" style="font-size:22px; color:rgb(160, 1, 1)">@item.Name </a>
+    }
+    else if (popularity >= 0.7 && popularity < 0.8)
+    {
+        <a asp-route="tag" asp-route-id="@item.TagID" asp-route-name="@item.Name" style="font-size:20px; color:rgb(160, 1, 1)">@item.Name </a>
+    }
+    else if (popularity >= 0.6 && popularity < 0.7)
+    {
+        <a asp-route="tag" asp-route-id="@item.TagID" asp-route-name="@item.Name" style="font-size:18px; color:rgb(160, 1, 1)">@item.Name </a>
+    }
+    else if (popularity >= 0.5 && popularity < 0.6)
+    {
+        <a asp-route="tag" asp-route-id="@item.TagID" asp-route-name="@item.Name" style="font-size:16px; color:rgb(160, 1, 1)">@item.Name </a>
+    }
+    else if (popularity >= 0.4 && popularity < 0.5)
+    {
+        <a asp-route="tag" asp-route-id="@item.TagID" asp-route-name="@item.Name" style="font-size:14px; color:rgb(160, 1, 1)">@item.Name </a>
+    }
+    else if (popularity >= 0.3 && popularity < 0.4)
+    {
+        <a asp-route="tag" asp-route-id="@item.TagID" asp-route-name="@item.Name" style="font-size:12px; color:rgb(160, 1, 1)">@item.Name </a>
+    }
+    else if (popularity >= 0.2 && popularity < 0.3)
+    {
+        <a asp-route="tag" asp-route-id="@item.TagID" asp-route-name="@item.Name" style="font-size:10px; color:rgb(160, 1, 1)">@item.Name </a>
+    }
+    else if (popularity >= 0.1 && popularity < 0.2)
+    {
+        <a asp-route="tag" asp-route-id="@item.TagID" asp-route-name="@item.Name" style="font-size:8px; color:rgb(160, 1, 1)">@item.Name </a>
+    }
+    else if (popularity < 0.1)
+    {
+        <a asp-route="tag" asp-route-id="@item.TagID" asp-route-name="@item.Name" style="font-size:6px; color:rgb(160, 1, 1)">@item.Name </a>
+    }
+}
+
+
+
+

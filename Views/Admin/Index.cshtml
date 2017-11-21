@@ -1,0 +1,56 @@
+﻿@model IEnumerable<MHBlog.Models.Post>;
+@{
+    ViewData["Title"] = "Marcelina Hojda - AdminPanel";
+}
+<p></p>
+<div style="margin-top:100px; margin-bottom: 10px; font-size:34px; width:100%">Posty:<a asp-action="Create" class=" btn btn-primary"style="margin-left:80%">Dodaj nowy</a></div>
+
+
+   
+
+
+<div class="card">
+    <div class="card-body">
+
+        <div class="table-wrapper-2">
+            <table class="table table-responsive">
+                <thead class="mdb-color" style="background-color:rgba(0,150,255,0.3)">
+                    <tr>
+                        <th class="th-lg">ID</th>
+                        <th class="th-lg">Tytuł</th>
+                        <th class="th-lg">Data</th>
+                        <th class="th-lg">Kategoria</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            
+                            <td>@Html.DisplayFor(modelItem => item.ID)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                            <td>@Html.DisplayFor(modelItem => item.ReleaseDate)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Category.Name)</td>
+                            <td><a asp-action="Edit" asp-route-id="@item.ID">Edytuj</a></td>
+                            <td><a asp-action="Details" asp-route-id="@item.ID">Szczegóły</a></td>
+                            <td><a asp-action="Delete" asp-route-id="@item.ID" style="color:red">Usuń</a></td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+@await Component.InvokeAsync("CategoryTable")
+
+
+
+
+
+
+

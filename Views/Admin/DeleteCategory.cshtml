@@ -1,0 +1,23 @@
+﻿@model MHBlog.Models.Category
+
+@{
+    ViewData["Title"] = "DeleteCategory";
+}
+
+
+@if (Model.isUsed == true)
+{
+    <h3 style="margin-top:100px">Kategoria: @Model.Name jest obecnie używana, zmień kategorię w postach żeby móc ją usunąć</h3>
+    <a asp-action="Index" class="btn btn-default">Wróć do list</a>
+}
+else
+{
+<h3 style="margin-top:100px">Jesteś pewna, że chcesz usunąć kategorię: @Model.Name</h3>
+
+
+    <form asp-action="DeleteCategory">
+        <input type="hidden" asp-for="CategoryID" />
+        <input type="submit" value="Usuń" class="btn btn-default" /> |
+        <a asp-action="Index" class="btn btn-default">Wróć do list</a>
+    </form>
+}

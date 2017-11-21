@@ -1,0 +1,48 @@
+﻿@using System.Collections.Generic
+@using System.Linq
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Http.Authentication
+@model LoginViewModel
+@inject SignInManager<ApplicationUser> SignInManager
+
+@{
+    ViewData["Title"] = "Logowanie do panelu Administratora";
+    ViewData["Image"] = "admin.png";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+  
+
+            <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+         
+                <hr />
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Email"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password">Hasło</label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label asp-for="RememberMe">
+                            <input asp-for="RememberMe" />
+                            Zapamiętaj
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group" style="text-align:center">
+                    <button type="submit" class="btn btn-primary" style="width:50%">Zaloguj</button>
+                </div>
+                
+            </form>
+
+ 
+
+
+
