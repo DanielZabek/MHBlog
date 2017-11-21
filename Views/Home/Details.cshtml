@@ -24,6 +24,7 @@
                     @foreach (var tag in Model.PostTags)
                     {
 
+
                         <a asp-route="tag" asp-route-id="@tag.Tag.TagID" asp-route-name="@tag.Tag.Name">@tag.Tag.Name </a>
 
                     }

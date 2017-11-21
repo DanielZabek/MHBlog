@@ -16,6 +16,7 @@
 **/appsettings.development.json
 **/appsettings.staging.json
 **/appsettings.production.json
+**/appsettings.json
 
 # Build results
 [Dd]ebug/
