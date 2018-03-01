@@ -17,10 +17,11 @@
         gtag('js', new Date());
         gtag('config', 'UA-107694381-1');
     </script>
+   
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
         (adsbygoogle = window.adsbygoogle || []).push({
-            google_ad_client: "ca-pub-8022369133636903",
+            google_ad_client: "ca-pub-5178637703920715",
             enable_page_level_ads: true
         });
     </script>
@@ -144,15 +145,36 @@
         </div>
     </header>
 
-    <div style="vertical-align: text-top;">
+    <div style="vertical-align: text-top;" >
         @RenderSection("sharebar", required: false)
+      
     </div>
+   
+
+
+   
     <div class="container" style="vertical-align: text-bottom;">
         <div class="row">
             <div class="col-md-9">
+               
+                
                 @RenderBody()
             </div>
             <div class="col-md-3" style="">
+
+                <div style="width:100%; text-align:center">
+
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- marcelinahojda -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-5178637703920715"
+                         data-ad-slot="2502391521"
+                         data-ad-format="rectangle"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
 
                 <div class="card" style="text-align:left; margin-bottom:15px">
                     <div class="card-body">
@@ -168,84 +190,91 @@
                         </p>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12 col-sm-6">
-                        <div class="card" style="text-align:left; margin-bottom:15px">
-                            <div class="card-body">
-                                <p class="lead" style="box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.12)">
-                                    <i class="fa fa-archive" aria-hidden="true"></i>
-                                    KATEGORIE:
-                                </p>
-                                @await Component.InvokeAsync("CategoryList")
+
+
+           
+
+
+                        <div class="row">
+                            <div class="col-md-12 col-sm-6">
+                                <div class="card" style="text-align:left; margin-bottom:15px">
+                                    <div class="card-body">
+                                        <p class="lead" style="box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.12)">
+                                            <i class="fa fa-archive" aria-hidden="true"></i>
+                                            KATEGORIE:
+                                        </p>
+                                        @await Component.InvokeAsync("CategoryList")
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <!-- TAG CLOUD -->
-                    <div class="col-md-12 col-sm-6">
-                        <div class="card" style="text-align:left; margin-bottom:15px">
-                            <div class="card-body">
-                                <p class="lead" style="box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.12)">
-                                    <i class="fa fa-tags" aria-hidden="true"></i>
-                                    TAGI:
-                                </p>
-                                <p class="card-text" style="padding-left:15px">
-                                    @await Component.InvokeAsync("TagsCloud")
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 col-sm-6">
-                        <!-- INSTAGRAM -->
-                        <div class="card" style="text-align:left; margin-bottom:15px">
-                            <div class="card-body">
-                                <a class="btn btn-clear" href="https://www.instagram.com/marcelinahojda/" style="box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.12);">
-                                    <div class="fa fa-instagram" aria-hidden="true"></div>
-                                    <div class="clear-text">INSTAGRAM</div>
-                                </a>
-                                <div>
-                                    <iframe src="https://snapwidget.com/embed/449445" class="snapwidget-widget" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:100%;"></iframe>
+                            <!-- TAG CLOUD -->
+                            <div class="col-md-12 col-sm-6">
+                                <div class="card" style="text-align:left; margin-bottom:15px">
+                                    <div class="card-body">
+                                        <p class="lead" style="box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.12)">
+                                            <i class="fa fa-tags" aria-hidden="true"></i>
+                                            TAGI:
+                                        </p>
+                                        <p class="card-text" style="padding-left:15px">
+                                            @await Component.InvokeAsync("TagsCloud")
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        </div>
-                        <div class="col-md-12 col-sm-6">
-                            <!-- FACEBOOK -->
-                            <div class="card" style="text-align:left; margin-bottom:15px;">
-                                <div class="card-body">
-                                    <a class="btn btn-clear" href="https://www.facebook.com/marcelinahojda" style="box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.12);">
-                                        <div class="fa fa-facebook" aria-hidden="true"></div>
-                                        <div class="clear-text">FACEBOOK</div>
-                                    </a>
-                                    <div>
-                                        <a href="https://www.facebook.com/marcelinahojda">
-                                            <img src="~/images/profil.jpg" />
+                        <div class="row">
+                            <div class="col-md-12 col-sm-6">
+                                <!-- INSTAGRAM -->
+                                <div class="card" style="text-align:left; margin-bottom:15px">
+                                    <div class="card-body">
+                                        <a class="btn btn-clear" href="https://www.instagram.com/marcelinahojda/" style="box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.12);">
+                                            <div class="fa fa-instagram" aria-hidden="true"></div>
+                                            <div class="clear-text">INSTAGRAM</div>
                                         </a>
-                                        <div class="fb-follow" data-href="https://www.facebook.com/marcelinahojda" data-width="50" data-layout="button_count" data-size="small" data-show-faces="true"></div>
+                                        <div>
+                                            <iframe src="https://snapwidget.com/embed/449445" class="snapwidget-widget" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:100%;"></iframe>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            </div>    
-                        </div>
-                            <!-- YOUTUBE -->
-                            <div class="card" style="text-align:left; margin-bottom:15px;">
-                                <div class="card-body">
-                                    <a class="btn btn-clear" href="https://www.youtube.com/channel/UCbDVZ31OSFZZSWLrOhgak0g" style="box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.12);">
-                                        <div class="fa fa-youtube" aria-hidden="true"></div>
-                                        <div class="clear-text">YOUTUBE</div>
-                                    </a>
-
-                                    <div class="video-container">
-
-                                        <iframe width="200" height="120" src="https://www.youtube.com/embed/videoseries?list=PL3voGlFBbJSzGnbu-msSCo6ff49x5xnC9&amp;controls=0?ecver=1" frameborder="0" allowfullscreen></iframe>
+                            <div class="col-md-12 col-sm-6">
+                                <!-- FACEBOOK -->
+                                <div class="card" style="text-align:left; margin-bottom:15px;">
+                                    <div class="card-body">
+                                        <a class="btn btn-clear" href="https://www.facebook.com/marcelinahojda" style="box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.12);">
+                                            <div class="fa fa-facebook" aria-hidden="true"></div>
+                                            <div class="clear-text">FACEBOOK</div>
+                                        </a>
+                                        <div>
+                                            <a href="https://www.facebook.com/marcelinahojda">
+                                                <img src="~/images/profil.jpg" />
+                                            </a>
+                                            <div class="fb-follow" data-href="https://www.facebook.com/marcelinahojda" data-width="50" data-layout="button_count" data-size="small" data-show-faces="true"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <!-- YOUTUBE -->
+                        <div class="card" style="text-align:left; margin-bottom:15px;">
+                            <div class="card-body">
+                                <a class="btn btn-clear" href="https://www.youtube.com/channel/UCbDVZ31OSFZZSWLrOhgak0g" style="box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.12);">
+                                    <div class="fa fa-youtube" aria-hidden="true"></div>
+                                    <div class="clear-text">YOUTUBE</div>
+                                </a>
+
+                                <div class="video-container">
+
+                                    <iframe width="200" height="120" src="https://www.youtube.com/embed/videoseries?list=PL3voGlFBbJSzGnbu-msSCo6ff49x5xnC9&amp;controls=0?ecver=1" frameborder="0" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
+      
             </div>
+   
     <hr />
     <footer>
         <div class="container-fluid">

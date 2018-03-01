@@ -28,7 +28,6 @@ namespace MHBlog.Controllers
             _enviroment = env;
         }
 
-        // GET: Admin
         [Route("admin")]
         public async Task<IActionResult> Index(int? page)
         {
@@ -39,7 +38,6 @@ namespace MHBlog.Controllers
             return View(await posts.ToListAsync());
         }
 
-        // GET: Admin/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -66,11 +64,7 @@ namespace MHBlog.Controllers
 
             return View(model);
         }
-
-
-        // POST: Admin/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+     
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(CreateViewModel model)
@@ -110,7 +104,7 @@ namespace MHBlog.Controllers
                 category.isUsed = true;
                 model.Post.ReleaseDate = DateTime.Now;
                 model.Post.Body = Request.Form["Body"].ToString();
-               
+
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -123,10 +117,6 @@ namespace MHBlog.Controllers
             return View(model);
         }
 
-
-        // POST: Admin/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateCategory([Bind("CategoryID,Name")] Category category)
@@ -140,8 +130,6 @@ namespace MHBlog.Controllers
             return View(category);
         }
 
-
-        // GET: Admin/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             var model = new CreateViewModel();
@@ -159,9 +147,6 @@ namespace MHBlog.Controllers
             return View(model);
         }
 
-        // POST: Admin/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ID,Title,Description,Body,CategoryID,ReleaseDate,ImageName")] Post post)
@@ -176,10 +161,10 @@ namespace MHBlog.Controllers
                 try
                 {
                     post.Body = Request.Form["Body"].ToString();
-                    
+
                     _context.Update(post);
 
-                    
+
                     await _context.SaveChangesAsync();
                 }
 
@@ -200,7 +185,6 @@ namespace MHBlog.Controllers
             return View(post);
         }
 
-        // GET: Admin/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -218,7 +202,6 @@ namespace MHBlog.Controllers
             return View(post);
         }
 
-        // POST: Admin/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -249,7 +232,6 @@ namespace MHBlog.Controllers
             return _context.Posts.Any(e => e.ID == id);
         }
 
-        // GET: Admin/DeleteCategory/5
         public async Task<IActionResult> DeleteCategory(int? id)
         {
             if (id == null)
@@ -266,7 +248,7 @@ namespace MHBlog.Controllers
 
             return View(category);
         }
-        // POST: Admin/DeleteCategory/5
+
         [HttpPost, ActionName("DeleteCategory")]
         public async Task<IActionResult> DeleteCategoryConfirmed(int id)
         {

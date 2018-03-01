@@ -22,8 +22,6 @@ namespace MHBlog.Controllers
         private readonly ApplicationDbContext _context;
         private readonly IConfiguration Configuration;
 
-
-
         public HomeController(ApplicationDbContext context, IConfiguration configuration)
         {
             _context = context;
@@ -32,10 +30,8 @@ namespace MHBlog.Controllers
 
         }
 
-
         public async Task<IActionResult> Index(int? page, string searchString)
         {
-
             IQueryable<Post> posts = _context.Posts
                 .OrderByDescending(post => post.ReleaseDate)
                 .Include(post => post.Category)
@@ -63,7 +59,6 @@ namespace MHBlog.Controllers
 
         }
 
-
         public async Task<IActionResult> CategoryView(int id, string name, int? page)
         {
             IQueryable<Post> posts = _context.Posts
@@ -77,8 +72,6 @@ namespace MHBlog.Controllers
             string friendlyName = FriendlyUrlHelper.GetFriendlyTitle(name);
             if (!string.Equals(friendlyName, name, StringComparison.Ordinal))
             {
-                // If the title is null, empty or does not match the friendly title, return a 301 Permanent
-                // Redirect to the correct friendly URL.
                 return RedirectToRoute("category", new { id = id, name = friendlyName });
             }
 
@@ -86,20 +79,17 @@ namespace MHBlog.Controllers
             int pageSize = 4;
 
             return View("Index", await PaginatedList<Post>.CreateAsync(posts.AsNoTracking(), page ?? 1, pageSize));
-
-
         }
 
-        
+
 
         public async Task<IActionResult> TagView(int id, string name, int? page)
         {
-
             IQueryable<Post> posts = _context.Posts
              .Include(p => p.PostTags)
                  .ThenInclude(t => t.Tag)
             .Include(p => p.Category);
-               
+
             posts = posts.Where(post => post.PostTags.Any(pt => pt.Tag.TagID == id));
 
             //POPULARITY INCREESE
@@ -111,7 +101,6 @@ namespace MHBlog.Controllers
                 _context.SaveChanges();
             }
 
-
             string friendlyName = FriendlyUrlHelper.GetFriendlyTitle(name);
             if (!string.Equals(friendlyName, name, StringComparison.Ordinal))
             {
@@ -120,48 +109,34 @@ namespace MHBlog.Controllers
                 return RedirectToRoute("tag", new { id = id, name = friendlyName });
             }
 
-            ViewData["Name"] = "#"+name;
+            ViewData["Name"] = "#" + name;
             int pageSize = 4;
 
             return View("Index", await PaginatedList<Post>.CreateAsync(posts.AsNoTracking(), page ?? 1, pageSize));
-
-
         }
 
         public IActionResult Contact()
         {
             ContactFormModel Contact = new ContactFormModel();
             return View(Contact);
-           
         }
-
 
         [HttpPost]
         public IActionResult Contact(ContactFormModel Contact)
         {
-           
+
             if (ModelState.IsValid)
             {
 
                 var message = new MailMessage(Contact.Email, Configuration["AppSettings:AdminUserEmail"]);
-
-                    message.To.Add(new MailAddress(Configuration["AppSettings:AdminUserEmail"]));
-                  
-
-                    message.From = new MailAddress(Contact.Email);
-
-                    message.Subject = Contact.Subject;
-
-                    message.Body = "Od: " + Contact.Email + Environment.NewLine + Contact.Name + " " + Contact.LastName + Environment.NewLine + "Temat: " + Contact.Subject + Environment.NewLine + Contact.Message;
-
+                message.To.Add(new MailAddress(Configuration["AppSettings:AdminUserEmail"]));
+                message.From = new MailAddress(Contact.Email);
+                message.Subject = Contact.Subject;
+                message.Body = "Od: " + Contact.Email + Environment.NewLine + Contact.Name + " " + Contact.LastName + Environment.NewLine + "Temat: " + Contact.Subject + Environment.NewLine + Contact.Message;
                 var smtpClient = new SmtpClient("smtp.gmail.com");
                 smtpClient.EnableSsl = true;
-              
                 smtpClient.Credentials = new NetworkCredential(Configuration["AppSettings:AdminUserEmail"], Configuration["AppSettings:UserPassword"]);
-
-                smtpClient.Send(message);
-
-              
+                smtpClient.Send(message);           
                 return RedirectToAction(nameof(Index));
 
             }
@@ -176,39 +151,23 @@ namespace MHBlog.Controllers
                               .ThenInclude(pt => pt.Tag)
                 .SingleOrDefaultAsync(m => m.ID == id).Result;
 
-
-
-
-
             if (post == null)
             {
                 return NotFound();
             }
 
-            string friendlyTitle = FriendlyUrlHelper.GetFriendlyTitle(post.Title,true);
+            string friendlyTitle = FriendlyUrlHelper.GetFriendlyTitle(post.Title, true);
             if (!string.Equals(friendlyTitle, title, StringComparison.Ordinal))
-            {
-                // If the title is null, empty or does not match the friendly title, return a 301 Permanent
-                // Redirect to the correct friendly URL.
+            {           
                 return RedirectToRoute("details", new { id = id, title = friendlyTitle });
             }
-
-            //ViewsCounter +1
+       
             post.ViewsCouter += 1;
             _context.Update(post);
             _context.SaveChanges();
 
             return View(post);
-        }
-
-
-        public IActionResult About()
-        {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
+        }   
 
         public IActionResult Error()
         {

@@ -26,44 +26,43 @@
  */
 /*********************
   Mixins
-**********************/
+*/
 
-
-.main-color {
-    background-color: rgba(160,1,1,0.7);
-}
-
-.shades.black {
-    background-color: #000000 !important;
-}
-
-.shades.white {
-    background-color: #FFFFFF !important;
-}
-
-
-.white {
-    background-color: #FFFFFF !important;
-}
-
-.white-text, .btn {
-    color: #FFFFFF !important;
-}
-@media (min-width: 388px) {
-    .pages {
-        display: inline;
-        text-align: center;
-        width: 100%;
-        margin-top: 50px;
+    .main-color {
+        background-color: rgba(160,1,1,0.7);
     }
-}
+
+    .shades.black {
+        background-color: #000000 !important;
+    }
+
+    .shades.white {
+        background-color: #FFFFFF !important;
+    }
+
+
+    .white {
+        background-color: #FFFFFF !important;
+    }
+
+    .white-text, .btn {
+        color: #FFFFFF !important;
+    }
+
+    @media (min-width: 388px) {
+        .pages {
+            display: inline;
+            text-align: center;
+            width: 100%;
+            margin-top: 50px;
+        }
+    }
 
     @media (max-width: 388px) {
         .pages {
             text-align: center;
             width: 100%;
             display: block;
-        
         }
     }
 
@@ -170,29 +169,29 @@
             color: white;
         }
 
-   
 
-    header.masthead .page-heading,
-    header.masthead .site-heading,
-    header.masthead .post-heading {
-        text-align: center;
-    }
 
-        header.masthead .page-heading h1,
-        header.masthead .site-heading h1 {
-            font-size: 50px;
-            margin-top: 0;
+        header.masthead .page-heading,
+        header.masthead .site-heading,
+        header.masthead .post-heading {
+            text-align: center;
         }
 
-        header.masthead .page-heading .subheading,
-        header.masthead .site-heading .subheading {
-            font-size: 24px;
-            font-weight: 300;
-            line-height: 1.1;
-            display: block;
-            margin: 10px 0 0;
-            font-family: 'Amiri', sans-serif;
-        }
+            header.masthead .page-heading h1,
+            header.masthead .site-heading h1 {
+                font-size: 50px;
+                margin-top: 0;
+            }
+
+            header.masthead .page-heading .subheading,
+            header.masthead .site-heading .subheading {
+                font-size: 24px;
+                font-weight: 300;
+                line-height: 1.1;
+                display: block;
+                margin: 10px 0 0;
+                font-family: 'Amiri', sans-serif;
+            }
 
     @media only screen and (min-width: 820px) {
         header.masthead .page-heading h1,
@@ -5519,10 +5518,12 @@
             font-weight: 400;
             font-family: 'Amiri', sans-serif;
         }
-        .card .card-text img{
-           width:100%;
-           height:auto;
-        }
+
+            .card .card-text img {
+                width: 100%;
+                height: auto;
+            }
+
         .card .card-footer.links-light a {
             font-size: 15px;
             color: #757575;
@@ -5541,20 +5542,22 @@
         color: #1d1e1f;
         background-color: rgba(160,1,1,0.7);
     }
+
     .navbar-collapse {
-    -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
-    -ms-flex-align: center;
-    align-items: center;
-    text-align: center;
-}
-@media(max-width: 1019px) {
-    .navbar-collapse .btn-primary {
-       min-width:150px;
-       margin:5px;
-       
+        -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+        -ms-flex-align: center;
+        align-items: center;
+        text-align: center;
     }
-}
+
+    @media(max-width: 1019px) {
+        .navbar-collapse .btn-primary {
+            min-width: 150px;
+            margin: 5px;
+        }
+    }
+
     .navbar {
         font-weight: 300;
         padding-right: 1rem !important;
@@ -5601,9 +5604,9 @@
         color: rgba(255, 255, 255, 0.5);
     }
 
-.navbar.navbar-light .navbar-nav .nav-item .nav-link.disabled, .navbar.navbar-light .navbar-nav .nav-item .nav-link.disabled:hover {
-    color: #bb5e5e;
-}
+    .navbar.navbar-light .navbar-nav .nav-item .nav-link.disabled, .navbar.navbar-light .navbar-nav .nav-item .nav-link.disabled:hover {
+        color: #bb5e5e;
+    }
 
     .navbar .nav-item .nav-link {
         display: block;
@@ -5698,7 +5701,7 @@
         width: 160px;
         height: 30px;
         font-size: 1em;
-        margin-top:1px;
+        margin-top: 1px;
     }
 
         .navbar.navbar-light form input[type=text]:focus:not([readonly]) {
