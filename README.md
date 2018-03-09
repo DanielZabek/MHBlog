@@ -20,6 +20,12 @@ Mój pierwszy projekt w technologii ASP.NET CORE, przeznaczony głównie do nauk
 - HTML5
 - CSS3
 
+# Index.cshtml:
+![alt text](https://image.ibb.co/nBFYoS/mhblog_Index.png)
+
+# Index.cshtml:
+![alt text](https://image.ibb.co/fVenF7/mhblogindex2.png)
+
 # Panel administracyjny dostępny po zalogowaniu:
 ![alt text](https://image.ibb.co/gvRvk7/mhblog1.png)
 
